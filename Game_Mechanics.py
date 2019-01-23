@@ -12,14 +12,14 @@ class Game:
         self.spawn_num()
 
     def new_board(self, size):
-        return [[(0) for i in range(size)] for i in range(size)]
+        return [[(' ') for i in range(size)] for i in range(size)]
 
     def is_board_full(self):
         board_full = True
 
         for i in range(len(self.board)):
             for j in range(len(self.board)):
-                if self.board[i][j] == 0:
+                if self.board[i][j] == ' ':
                     board_full = False
                     break
 
@@ -33,7 +33,7 @@ class Game:
                 rand_r = random.randint(0, 3)
                 rand_c = random.randint(0, 3)
 
-                if self.board[rand_r][rand_c] == 0:
+                if self.board[rand_r][rand_c] == ' ':
                     probability = random.randint(0, 10)
                     
                     if probability < 8:
@@ -55,10 +55,10 @@ class Game:
                 row = rows_list[j]
 
                 for k in range(0, 3):  # looking at everything starting from left side
-                    if self.board[row][k] == 0:
-                        if self.board[row][k + 1] != 0:
+                    if self.board[row][k] == ' ':
+                        if self.board[row][k + 1] != ' ':
                             self.board[row][k] = self.board[row][k + 1]
-                            self.board[row][k + 1] = 0
+                            self.board[row][k + 1] = ' '
                             rows_shifted = True
 
             if temp == self.board:
@@ -72,22 +72,22 @@ class Game:
         for i in range(len(rows_list)):
             row = rows_list[i]
 
-            if self.board[row][0] != 0 and self.board[row][0] == self.board[row][1]:
+            if self.board[row][0] != ' ' and self.board[row][0] == self.board[row][1]:
                 self.board[row][0] += self.board[row][1]
                 self.board[row][1] = self.board[row][2]
                 self.board[row][2] = self.board[row][3]
-                self.board[row][3] = 0
+                self.board[row][3] = ' '
                 cells_merged = True
 
-            if self.board[row][1] != 0 and self.board[row][1] == self.board[row][2]:
+            if self.board[row][1] != ' ' and self.board[row][1] == self.board[row][2]:
                 self.board[row][1] += self.board[row][2]
                 self.board[row][2] = self.board[row][3]
-                self.board[row][3] = 0
+                self.board[row][3] = ' '
                 cells_merged = True
 
-            if self.board[row][2] != 0 and self.board[row][2] == self.board[row][3]:
+            if self.board[row][2] != ' ' and self.board[row][2] == self.board[row][3]:
                 self.board[row][2] += self.board[row][3]
-                self.board[row][3] = 0
+                self.board[row][3] = ' '
                 cells_merged = True
 
         return rows_shifted or cells_merged
@@ -104,10 +104,10 @@ class Game:
                 row = rows_list[j]
 
                 for k in reversed(range(1, 4)):  # looking at everything starting from right side
-                    if self.board[row][k] == 0:
-                        if self.board[row][k - 1] != 0:
+                    if self.board[row][k] == ' ':
+                        if self.board[row][k - 1] != ' ':
                             self.board[row][k] = self.board[row][k - 1]
-                            self.board[row][k - 1] = 0
+                            self.board[row][k - 1] = ' '
                             rows_shifted = True
 
             if temp == self.board:
@@ -121,22 +121,22 @@ class Game:
         for i in range(len(rows_list)):
             row = rows_list[i]
 
-            if self.board[row][3] != 0 and self.board[row][3] == self.board[row][2]:
+            if self.board[row][3] != ' ' and self.board[row][3] == self.board[row][2]:
                 self.board[row][3] += self.board[row][2]
                 self.board[row][2] = self.board[row][1]
                 self.board[row][1] = self.board[row][0]
-                self.board[row][0] = 0
+                self.board[row][0] = ' '
                 cells_merged = True
 
-            if self.board[row][2] != 0 and self.board[row][2] == self.board[row][1]:
+            if self.board[row][2] != ' ' and self.board[row][2] == self.board[row][1]:
                 self.board[row][2] += self.board[row][1]
                 self.board[row][1] = self.board[row][0]
-                self.board[row][0] = 0
+                self.board[row][0] = ' '
                 cells_merged = True
 
-            if self.board[row][1] != 0 and self.board[row][1] == self.board[row][0]:
+            if self.board[row][1] != ' ' and self.board[row][1] == self.board[row][0]:
                 self.board[row][1] += self.board[row][0]
-                self.board[row][0] = 0
+                self.board[row][0] = ' '
                 cells_merged = True
 
         return rows_shifted or cells_merged
@@ -153,10 +153,10 @@ class Game:
                 col = cols_list[j]
 
                 for k in range(0, 3):
-                    if self.board[k][col] == 0:
-                        if self.board[k + 1][col] != 0:
+                    if self.board[k][col] == ' ':
+                        if self.board[k + 1][col] != ' ':
                             self.board[k][col] = self.board[k + 1][col]
-                            self.board[k + 1][col] = 0
+                            self.board[k + 1][col] = ' '
                             cols_shifted = True
 
             if temp == self.board:
@@ -170,22 +170,22 @@ class Game:
         for i in range(len(cols_list)):
             col = cols_list[i]
 
-            if self.board[0][col] != 0 and self.board[0][col] == self.board[1][col]:
+            if self.board[0][col] != ' ' and self.board[0][col] == self.board[1][col]:
                 self.board[0][col] += self.board[1][col]
                 self.board[1][col] = self.board[2][col]
                 self.board[2][col] = self.board[3][col]
-                self.board[3][col] = 0
+                self.board[3][col] = ' '
                 cells_merged = True
 
-            if self.board[1][col] != 0 and self.board[1][col] == self.board[2][col]:
+            if self.board[1][col] != ' ' and self.board[1][col] == self.board[2][col]:
                 self.board[1][col] += self.board[2][col]
                 self.board[2][col] = self.board[3][col]
-                self.board[3][col] = 0
+                self.board[3][col] = ' '
                 cells_merged = True
 
-            if self.board[2][col] != 0 and self.board[2][col] == self.board[3][col]:
+            if self.board[2][col] != ' ' and self.board[2][col] == self.board[3][col]:
                 self.board[2][col] += self.board[3][col]
-                self.board[3][col] = 0
+                self.board[3][col] = ' '
                 cells_merged = True
 
         return cols_shifted or cells_merged
@@ -202,10 +202,10 @@ class Game:
                 col = cols_list[j]
 
                 for j in reversed(range(1, 4)):  # looking at everything starting from right side
-                    if self.board[j][col] == 0:
-                        if self.board[j-1][col] != 0:
+                    if self.board[j][col] == ' ':
+                        if self.board[j-1][col] != ' ':
                             self.board[j][col] = self.board[j - 1][col]
-                            self.board[j - 1][col] = 0
+                            self.board[j - 1][col] = ' '
                             cols_shifted = True
 
             if temp == self.board:
@@ -219,22 +219,22 @@ class Game:
         for i in range(len(cols_list)):
             col = cols_list[i]
 
-            if self.board[3][col] != 0 and self.board[3][col] == self.board[2][col]:
+            if self.board[3][col] != ' ' and self.board[3][col] == self.board[2][col]:
                 self.board[3][col] += self.board[2][col]
                 self.board[2][col] = self.board[1][col]
                 self.board[1][col] = self.board[0][col]
-                self.board[0][col] = 0
+                self.board[0][col] = ' '
                 cells_merged = True
 
-            if self.board[2][col] != 0 and self.board[2][col] == self.board[1][col]:
+            if self.board[2][col] != ' ' and self.board[2][col] == self.board[1][col]:
                 self.board[2][col] += self.board[1][col]
                 self.board[1][col] = self.board[0][col]
-                self.board[0][col] = 0
+                self.board[0][col] = ' '
                 cells_merged = True
 
-            if self.board[1][col] != 0 and self.board[1][col] == self.board[0][col]:
+            if self.board[1][col] != ' ' and self.board[1][col] == self.board[0][col]:
                 self.board[1][col] += self.board[0][col]
-                self.board[0][col] = 0
+                self.board[0][col] = ' '
                 cells_merged = True
 
         return cols_shifted or cells_merged
@@ -253,21 +253,8 @@ class Game:
         populated_cols = list()
 
         for col in range(len(self.board)):
-            if not (self.board[0][col] == 0 and self.board[1][col] == 0 and self.board[2][col] == 0 and self.board[3][col] == 0):
+            if not (self.board[0][col] == ' ' and self.board[1][col] == ' ' and self.board[2][col] == ' ' and self.board[3][col] == ' '):
                 populated_cols.append(col)
 
         # print(populated_cols)
         return populated_cols
-        
-if __name__ == "__main__":
-    g = Game()
-    g.display()
-    while True:
-        move = input("Enter direction")
-        if move == "<":
-            g.shift_board_left()
-        if move == ">":
-            g.shift_board_right()
-        if move == "v":
-            g.shift_board_down()
-        g.display()
