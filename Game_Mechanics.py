@@ -260,3 +260,19 @@ class Game:
 
         # print(populated_cols)
         return populated_cols
+        
+if __name__ == "__main__":
+    g = Game()
+    g.display()
+    while True:
+        move = input("Enter direction")
+        if move == "<":
+            g.shift_board_left()
+        if move == ">":
+            g.shift_board_right()
+        if move == "v":
+            g.shift_board_down()
+        g.display()
+         
+  
+        
