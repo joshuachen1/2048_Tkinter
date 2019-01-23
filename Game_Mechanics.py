@@ -152,17 +152,17 @@ class Game:
             for j in range(len(cols_list)):
                 col = cols_list[j]
 
-                for k in reversed(range(1, 4)):
+                for k in range(0, 3):
                     if self.board[k][col] == 0:
-                        if self.board[k- 1][col] != 0:
-                            self.board[k][col] = self.board[k - 1][col]
-                            self.board[k - 1][col] = 0
+                        if self.board[k + 1][col] != 0:
+                            self.board[k][col] = self.board[k + 1][col]
+                            self.board[k + 1][col] = 0
                             cols_shifted = True
 
             if temp == self.board:
                 transitioning = False
 
-        return self.merge_cells_right(cols_list, cols_shifted)
+        return self.merge_cells_right(self.cols_with_nums(), cols_shifted)
 
     def merge_cells_up(self, cols_list: list(), cols_shifted: bool):
         cells_merged = False
@@ -206,10 +206,8 @@ class Game:
         populated_cols = list()
 
         for col in range(len(self.board)):
-            if self.board[0][col] == 0:
-                if self.board[1][col] == 0:
-                    if self.board[2][col] == 0:
-                        if self.board[3][col] == 0:
-                            populated_cols.append(col)
+            if not (self.board[0][col] == 0 and self.board[1][col] == 0 and self.board[2][col] == 0 and self.board[3][col] == 0):
+                populated_cols.append(col)
 
+        print(populated_cols)
         return populated_cols
