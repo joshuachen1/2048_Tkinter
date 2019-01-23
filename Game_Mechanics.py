@@ -162,7 +162,7 @@ class Game:
             if temp == self.board:
                 transitioning = False
 
-        return self.merge_cells_right(self.cols_with_nums(), cols_shifted)
+        return self.merge_cells_up(self.cols_with_nums(), cols_shifted)
 
     def merge_cells_up(self, cols_list: list(), cols_shifted: bool):
         cells_merged = False
@@ -211,7 +211,7 @@ class Game:
             if temp == self.board:
                 transitioning = False
 
-        return self.merge_cells_right(cols_list, cols_shifted)
+        return self.merge_cells_down(cols_list, cols_shifted)
 
     def merge_cells_down(self, cols_list: list(), cols_shifted: bool):
         cells_merged = False
@@ -238,8 +238,6 @@ class Game:
                 cells_merged = True
 
         return cols_shifted or cells_merged
-        
-
 
     def rows_with_nums(self):
         populated_rows = list()
