@@ -1,6 +1,6 @@
 from tkinter import Tk, Label, Frame, Canvas, StringVar, SUNKEN, BOTTOM, X
 import random
-
+import copy
 
 class Game:
 
@@ -20,25 +20,26 @@ class Game:
         visual_board.pack()
 
         # ***** Initialize Board State *****
-        self.board = self.new_board()
+        BOARD_SIZE = 4
+        self.board = self.new_board(BOARD_SIZE)
         self.spawn_num()
         self.spawn_num()
         self.display_board()
 
 
-    def new_board(self):
-        return [[(' ') for i in range(4)] for i in range(4)]
+    def new_board(self, size):
+        return [[(' ') for i in range(size)] for i in range(size)]
 
     def display_board(self):
-        for i in range(4):
+        for i in range(len(self.board)):
             print("|", self.board[i][0], self.board[i][1], self.board[i][2], self.board[i][3],"|")
         print()
 
     def is_board_full(self):
         board_full = True
 
-        for i in range(4):
-            for j in range(4):
+        for i in range(len(self.board)):
+            for j in range(len(self.board)):
                 if self.board[i][j] == ' ':
                     board_full = False
                     break
@@ -54,36 +55,130 @@ class Game:
                 rand_y = random.randint(0, 3)
 
                 if self.board[rand_x][rand_y] == ' ':
-                    self.board[rand_x][rand_y] = (2 * random.randint(1, 2))  # Spawn either 2 or 4
+                    probability = random.randint(0, 10)
+                    
+                    if probability < 8:
+                        self.board[rand_x][rand_y] = 2
+                    else:
+                        self.board[rand_x][rand_y] = 4
+                        
                     spawning_num = False
 
     def shift(self, event):
 
+        board_updated = False
+
         # Determine shift
         if event.keycode == 8124162:
             shift = "left"
+            board_updated = self.shift_board_left()
         elif event.keycode == 8189699:
             shift = "right"
+            board_updated = self.shift_board_right()
         elif event.keycode == 8320768:
             shift = "up"
+            self.shift_board_up()
         elif event.keycode == 8255233:
             shift = "down"
+            self.shift_board_down()
         else:
-            shift = "no shift"
-
-        if shift == "no shift":
             pass
 
-        else:
-            # Shift board
 
-            print ("shift: " + shift)
-            self.display_board()
+        print ("shift: " + shift)
+        self.display_board()
+
+        if board_updated:
             self.spawn_num()
             self.display_board()
 
+    def shift_board_left(self):
+        rows_list = self.rows_with_nums()
+        rows_shift = False
 
+        transitioning = True
+        while transitioning:
+            temp = copy.deepcopy(self.board)
 
+            for j in range(len(rows_list)):
+                row = rows_list[j]
+
+                for j in range(0, 3):  # looking at everything starting from right side
+                    if self.board[row][j] == ' ':
+                        self.board[row][j] = self.board[row][j + 1]
+                        self.board[row][j + 1] = ' '
+                        rows_shift = True
+
+            if temp == self.board:
+                transitioning = False
+
+        return self.merge_cells_left(rows_list, rows_shift)
+
+    def merge_cells_left(self, rows_list: list(), rows_shift: bool):
+        cells_merged = False
+
+        for i in range(len(rows_list)):
+            row = rows_list[i]
+
+            if self.board[row][0] != ' ' and self.board[row][0] == self.board[row][1]:
+                self.board[row][0] += self.board[row][1]
+                self.board[row][1] = self.board[row][2]
+                self.board[row][2] = self.board[row][3]
+                self.board[row][3] = ' '
+                cells_merged = True
+
+            if self.board[row][1] != ' ' and self.board[row][1] == self.board[row][2]:
+                self.board[row][1] += self.board[row][2]
+                self.board[row][2] = self.board[row][3]
+                self.board[row][3] = ' '
+                cells_merged = True
+
+            if self.board[row][2] != ' ' and self.board[row][2] == self.board[row][3]:
+                self.board[row][2] += self.board[row][3]
+                self.board[row][3] = ' '
+                cells_merged = True
+
+        return (rows_shift or cells_merged)
+
+    def shift_board_right(self):
+        transitioning = True
+        board_updated = False
+        while transitioning:
+            temp = copy.deepcopy(self.board)
+
+            for row in self.board:
+                for i in reversed(range(1, 4)):  # looking at everything starting from right side
+                    if row[i] == ' ':
+                        if row[i - 1] != ' ':
+                            row[i] = row[i - 1]
+                            row[i - 1] = ' '
+                            board_updated = True
+
+                    elif row[i] == row[i - 1]:
+                        row[i] = row[i - 1] + row[i]
+                        row[i - 1] = ' '
+                        board_updated = True
+
+            if temp == self.board:
+                transitioning = False
+
+        return board_updated
+
+    def shift_board_up(self):
+        pass
+
+    def shift_board_down(self):
+        pass
+
+    def rows_with_nums(self):
+        populated_rows = list()
+
+        for i in range(len(self.board)):
+            if self.board[i] != [' ', ' ', ' ', ' ']:
+                populated_rows.append(i)
+
+        print(populated_rows)
+        return populated_rows
 
 root = Tk()
 Game(root)
