@@ -26,9 +26,8 @@ class Game:
         self.spawn_num()
         self.display_board()
 
-
     def new_board(self, size):
-        return [[(' ') for i in range(size)] for i in range(size)]
+        return [[(0) for i in range(size)] for i in range(size)]
 
     def display_board(self):
         for i in range(len(self.board)):
@@ -40,7 +39,7 @@ class Game:
 
         for i in range(len(self.board)):
             for j in range(len(self.board)):
-                if self.board[i][j] == ' ':
+                if self.board[i][j] == 0:
                     board_full = False
                     break
 
@@ -51,16 +50,16 @@ class Game:
             spawning_num = True
 
             while spawning_num:
-                rand_x = random.randint(0, 3)
-                rand_y = random.randint(0, 3)
+                rand_r = random.randint(0, 3)
+                rand_c = random.randint(0, 3)
 
-                if self.board[rand_x][rand_y] == ' ':
+                if self.board[rand_r][rand_c] == 0:
                     probability = random.randint(0, 10)
                     
                     if probability < 8:
-                        self.board[rand_x][rand_y] = 2
+                        self.board[rand_r][rand_c] = 2
                     else:
-                        self.board[rand_x][rand_y] = 4
+                        self.board[rand_r][rand_c] = 4
                         
                     spawning_num = False
 
@@ -100,7 +99,7 @@ class Game:
 
     def shift_board_left(self):
         rows_list = self.rows_with_nums()
-        rows_shift = False
+        rows_shifted = False
 
         transitioning = True
         while transitioning:
@@ -110,46 +109,46 @@ class Game:
                 row = rows_list[j]
 
                 for j in range(0, 3):  # looking at everything starting from right side
-                    if self.board[row][j] == ' ':
-                        if self.board[row][j + 1] != ' ':
+                    if self.board[row][j] == 0:
+                        if self.board[row][j + 1] != 0:
                             self.board[row][j] = self.board[row][j + 1]
-                            self.board[row][j + 1] = ' '
-                            rows_shift = True
+                            self.board[row][j + 1] = 0
+                            rows_shifted = True
 
             if temp == self.board:
                 transitioning = False
 
-        return self.merge_cells_left(rows_list, rows_shift)
+        return self.merge_cells_left(rows_list, rows_shifted)
 
-    def merge_cells_left(self, rows_list: list(), rows_shift: bool):
+    def merge_cells_left(self, rows_list: list(), rows_shifted: bool):
         cells_merged = False
 
         for i in range(len(rows_list)):
             row = rows_list[i]
 
-            if self.board[row][0] != ' ' and self.board[row][0] == self.board[row][1]:
+            if self.board[row][0] != 0 and self.board[row][0] == self.board[row][1]:
                 self.board[row][0] += self.board[row][1]
                 self.board[row][1] = self.board[row][2]
                 self.board[row][2] = self.board[row][3]
-                self.board[row][3] = ' '
+                self.board[row][3] = 0
                 cells_merged = True
 
-            if self.board[row][1] != ' ' and self.board[row][1] == self.board[row][2]:
+            if self.board[row][1] != 0 and self.board[row][1] == self.board[row][2]:
                 self.board[row][1] += self.board[row][2]
                 self.board[row][2] = self.board[row][3]
-                self.board[row][3] = ' '
+                self.board[row][3] = 0
                 cells_merged = True
 
-            if self.board[row][2] != ' ' and self.board[row][2] == self.board[row][3]:
+            if self.board[row][2] != 0 and self.board[row][2] == self.board[row][3]:
                 self.board[row][2] += self.board[row][3]
-                self.board[row][3] = ' '
+                self.board[row][3] = 0
                 cells_merged = True
 
-        return rows_shift or cells_merged
+        return rows_shifted or cells_merged
 
     def shift_board_right(self):
         rows_list = self.rows_with_nums()
-        rows_shift = False
+        rows_shifted = False
 
         transitioning = True
         while transitioning:
@@ -159,42 +158,42 @@ class Game:
                 row = rows_list[j]
 
                 for j in reversed(range(1, 4)):  # looking at everything starting from right side
-                    if self.board[row][j] == ' ':
-                        if self.board[row][j - 1] != ' ':
+                    if self.board[row][j] == 0:
+                        if self.board[row][j - 1] != 0:
                             self.board[row][j] = self.board[row][j - 1]
-                            self.board[row][j - 1] = ' '
-                            rows_shift = True
+                            self.board[row][j - 1] = 0
+                            rows_shifted = True
 
             if temp == self.board:
                 transitioning = False
 
-        return self.merge_cells_right(rows_list, rows_shift)
+        return self.merge_cells_right(rows_list, rows_shifted)
 
-    def merge_cells_right(self, rows_list: list(), rows_shift: bool):
+    def merge_cells_right(self, rows_list: list(), rows_shifted: bool):
         cells_merged = False
 
         for i in range(len(rows_list)):
             row = rows_list[i]
 
-            if self.board[row][3] != ' ' and self.board[row][3] == self.board[row][2]:
+            if self.board[row][3] != 0 and self.board[row][3] == self.board[row][2]:
                 self.board[row][3] += self.board[row][2]
                 self.board[row][2] = self.board[row][1]
                 self.board[row][1] = self.board[row][0]
-                self.board[row][0] = ' '
+                self.board[row][0] = 0
                 cells_merged = True
 
-            if self.board[row][2] != ' ' and self.board[row][2] == self.board[row][1]:
+            if self.board[row][2] != 0 and self.board[row][2] == self.board[row][1]:
                 self.board[row][2] += self.board[row][1]
                 self.board[row][1] = self.board[row][0]
-                self.board[row][0] = ' '
+                self.board[row][0] = 0
                 cells_merged = True
 
-            if self.board[row][1] != ' ' and self.board[row][1] == self.board[row][0]:
+            if self.board[row][1] != 0 and self.board[row][1] == self.board[row][0]:
                 self.board[row][1] += self.board[row][0]
-                self.board[row][0] = ' '
+                self.board[row][0] = 0
                 cells_merged = True
 
-        return rows_shift or cells_merged
+        return rows_shifted or cells_merged
 
     def shift_board_up(self):
         pass
@@ -206,12 +205,14 @@ class Game:
         populated_rows = list()
 
         for i in range(len(self.board)):
-            if self.board[i] != [' ', ' ', ' ', ' ']:
+            if self.board[i] != [0, 0, 0, 0]:
                 populated_rows.append(i)
 
         # print(populated_rows)
         return populated_rows
 
-root = Tk()
-Game(root)
-root.mainloop()
+
+if __name__ == '__main__':
+    root = Tk()
+    Game(root)
+    root.mainloop()
