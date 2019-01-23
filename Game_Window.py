@@ -19,9 +19,8 @@ class GameWindow:
         self.root.title("2048")
 
         # ***** Scoreboard *****
-        self.score = 0
         self.points = StringVar()
-        self.points.set("Points\n--------\n{}".format(self.score))
+        self.points.set("Points\n--------\n{}".format(self.game.score))
         point_counter = Label(self.root, textvariable=self.points, bd=1, relief=SUNKEN, fg="white", bg="brown")
         point_counter.grid(row=0, column=0)
 
@@ -132,6 +131,7 @@ class GameWindow:
             pass
 
         self.display_board()
+        self.points.set("Points\n--------\n{}".format(self.game.score))
 
         if board_updated:
             self.game.spawn_num()

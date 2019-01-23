@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="428549c9-2a49-4192-b324-535e115624b2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game_Mechanics.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game_Mechanics.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Game_Window.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game_Window.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,27 +12,30 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/2048_Tkinter$Game_Mechanics.coverage" NAME="Game_Mechanics Coverage Results" MODIFIED="1548215198826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/2048_Tkinter$Game.coverage" NAME="Game Coverage Results" MODIFIED="1548234862460" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/2048_Tkinter$Game.coverage" NAME="Game Coverage Results" MODIFIED="1548235329676" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game_Mechanics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="58" column="57" lean-forward="true" selection-start-line="58" selection-start-column="57" selection-end-line="58" selection-end-column="57" />
+            <state relative-caret-position="21">
+              <caret line="70" column="70" selection-start-line="70" selection-start-column="70" selection-end-line="70" selection-end-column="70" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
+                <element signature="e#1244#2000#0" />
+                <element signature="e#2081#3052#0" />
+                <element signature="e#3095#3863#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Game_Window.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
+            <state relative-caret-position="821">
+              <caret line="74" column="36" lean-forward="true" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
               <folding>
                 <element signature="e#0#67#0" expanded="true" />
               </folding>
@@ -72,8 +73,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Game.py" />
-        <option value="$PROJECT_DIR$/Game_Mechanics.py" />
         <option value="$PROJECT_DIR$/Game_Window.py" />
+        <option value="$PROJECT_DIR$/Game_Mechanics.py" />
       </list>
     </option>
   </component>
@@ -171,12 +172,12 @@
       <option name="presentableId" value="Default" />
       <updated>1548192084624</updated>
       <workItem from="1548192087804" duration="13465000" />
-      <workItem from="1548216812714" duration="9534000" />
+      <workItem from="1548216812714" duration="9847000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22999000" />
+    <option name="totallyTimeSpent" value="23312000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="404" y="23" width="983" height="783" extended-state="0" />
@@ -211,22 +212,25 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Game_Mechanics.py">
+    <entry file="file://$PROJECT_DIR$/Game_Window.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="58" column="57" lean-forward="true" selection-start-line="58" selection-start-column="57" selection-end-line="58" selection-end-column="57" />
+        <state relative-caret-position="821">
+          <caret line="74" column="36" lean-forward="true" selection-start-line="74" selection-start-column="36" selection-end-line="74" selection-end-column="36" />
           <folding>
-            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#0#67#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Game_Window.py">
+    <entry file="file://$PROJECT_DIR$/Game_Mechanics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="23" column="64" selection-start-line="23" selection-start-column="64" selection-end-line="23" selection-end-column="64" />
+        <state relative-caret-position="21">
+          <caret line="70" column="70" selection-start-line="70" selection-start-column="70" selection-end-line="70" selection-end-column="70" />
           <folding>
-            <element signature="e#0#67#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
+            <element signature="e#1244#2000#0" />
+            <element signature="e#2081#3052#0" />
+            <element signature="e#3095#3863#0" />
           </folding>
         </state>
       </provider>

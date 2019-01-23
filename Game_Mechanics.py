@@ -11,6 +11,8 @@ class Game:
         self.spawn_num()
         self.spawn_num()
 
+        self.score = 0
+
     def new_board(self, size):
         return [[(' ') for i in range(size)] for i in range(size)]
 
@@ -77,17 +79,20 @@ class Game:
                 self.board[row][1] = self.board[row][2]
                 self.board[row][2] = self.board[row][3]
                 self.board[row][3] = ' '
+                self.score += self.board[row][0]
                 cells_merged = True
 
             if self.board[row][1] != ' ' and self.board[row][1] == self.board[row][2]:
                 self.board[row][1] += self.board[row][2]
                 self.board[row][2] = self.board[row][3]
                 self.board[row][3] = ' '
+                self.score += self.board[row][1]
                 cells_merged = True
 
             if self.board[row][2] != ' ' and self.board[row][2] == self.board[row][3]:
                 self.board[row][2] += self.board[row][3]
                 self.board[row][3] = ' '
+                self.score += self.board[row][2]
                 cells_merged = True
 
         return rows_shifted or cells_merged
@@ -126,17 +131,20 @@ class Game:
                 self.board[row][2] = self.board[row][1]
                 self.board[row][1] = self.board[row][0]
                 self.board[row][0] = ' '
+                self.score += self.board[row][3]
                 cells_merged = True
 
             if self.board[row][2] != ' ' and self.board[row][2] == self.board[row][1]:
                 self.board[row][2] += self.board[row][1]
                 self.board[row][1] = self.board[row][0]
                 self.board[row][0] = ' '
+                self.score += self.board[row][2]
                 cells_merged = True
 
             if self.board[row][1] != ' ' and self.board[row][1] == self.board[row][0]:
                 self.board[row][1] += self.board[row][0]
                 self.board[row][0] = ' '
+                self.score += self.board[row][1]
                 cells_merged = True
 
         return rows_shifted or cells_merged
@@ -175,17 +183,20 @@ class Game:
                 self.board[1][col] = self.board[2][col]
                 self.board[2][col] = self.board[3][col]
                 self.board[3][col] = ' '
+                self.score += self.board[0][col]
                 cells_merged = True
 
             if self.board[1][col] != ' ' and self.board[1][col] == self.board[2][col]:
                 self.board[1][col] += self.board[2][col]
                 self.board[2][col] = self.board[3][col]
                 self.board[3][col] = ' '
+                self.score += self.board[1][col]
                 cells_merged = True
 
             if self.board[2][col] != ' ' and self.board[2][col] == self.board[3][col]:
                 self.board[2][col] += self.board[3][col]
                 self.board[3][col] = ' '
+                self.score += self.board[2][col]
                 cells_merged = True
 
         return cols_shifted or cells_merged
@@ -224,17 +235,20 @@ class Game:
                 self.board[2][col] = self.board[1][col]
                 self.board[1][col] = self.board[0][col]
                 self.board[0][col] = ' '
+                self.score += self.board[3][col]
                 cells_merged = True
 
             if self.board[2][col] != ' ' and self.board[2][col] == self.board[1][col]:
                 self.board[2][col] += self.board[1][col]
                 self.board[1][col] = self.board[0][col]
                 self.board[0][col] = ' '
+                self.score += self.board[2][col]
                 cells_merged = True
 
             if self.board[1][col] != ' ' and self.board[1][col] == self.board[0][col]:
                 self.board[1][col] += self.board[0][col]
                 self.board[0][col] = ' '
+                self.score += self.board[1][col]
                 cells_merged = True
 
         return cols_shifted or cells_merged
