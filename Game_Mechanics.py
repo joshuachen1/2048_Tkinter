@@ -54,11 +54,11 @@ class Game:
             for j in range(len(rows_list)):
                 row = rows_list[j]
 
-                for j in range(0, 3):  # looking at everything starting from left side
-                    if self.board[row][j] == 0:
-                        if self.board[row][j + 1] != 0:
-                            self.board[row][j] = self.board[row][j + 1]
-                            self.board[row][j + 1] = 0
+                for k in range(0, 3):  # looking at everything starting from left side
+                    if self.board[row][k] == 0:
+                        if self.board[row][k + 1] != 0:
+                            self.board[row][k] = self.board[row][k + 1]
+                            self.board[row][k + 1] = 0
                             rows_shifted = True
 
             if temp == self.board:
@@ -103,11 +103,11 @@ class Game:
             for j in range(len(rows_list)):
                 row = rows_list[j]
 
-                for j in reversed(range(1, 4)):  # looking at everything starting from right side
-                    if self.board[row][j] == 0:
-                        if self.board[row][j - 1] != 0:
-                            self.board[row][j] = self.board[row][j - 1]
-                            self.board[row][j - 1] = 0
+                for k in reversed(range(1, 4)):  # looking at everything starting from right side
+                    if self.board[row][k] == 0:
+                        if self.board[row][k - 1] != 0:
+                            self.board[row][k] = self.board[row][k - 1]
+                            self.board[row][k - 1] = 0
                             rows_shifted = True
 
             if temp == self.board:
@@ -142,7 +142,53 @@ class Game:
         return rows_shifted or cells_merged
 
     def shift_board_up(self):
-        pass
+        cols_list = self.cols_with_nums()
+        cols_shifted = False
+
+        transitioning = True
+        while transitioning:
+            temp = copy.deepcopy(self.board)
+
+            for j in range(len(cols_list)):
+                col = cols_list[j]
+
+                for k in reversed(range(1, 4)):
+                    if self.board[k][col] == 0:
+                        if self.board[k- 1][col] != 0:
+                            self.board[k][col] = self.board[k - 1][col]
+                            self.board[k - 1][col] = 0
+                            cols_shifted = True
+
+            if temp == self.board:
+                transitioning = False
+
+        return self.merge_cells_right(cols_list, cols_shifted)
+
+    def merge_cells_up(self, cols_list: list(), cols_shifted: bool):
+        cells_merged = False
+
+        for i in range(len(cols_list)):
+            col = cols_list[i]
+
+            if self.board[0][col] != 0 and self.board[0][col] == self.board[1][col]:
+                self.board[0][col] += self.board[1][col]
+                self.board[1][col] = self.board[2][col]
+                self.board[2][col] = self.board[3][col]
+                self.board[3][col] = 0
+                cells_merged = True
+
+            if self.board[1][col] != 0 and self.board[1][col] == self.board[2][col]:
+                self.board[1][col] += self.board[2][col]
+                self.board[2][col] = self.board[3][col]
+                self.board[3][col] = 0
+                cells_merged = True
+
+            if self.board[2][col] != 0 and self.board[2][col] == self.board[3][col]:
+                self.board[2][col] += self.board[3][col]
+                self.board[3][col] = 0
+                cells_merged = True
+
+        return cols_shifted or cells_merged
 
     def shift_board_down(self):
         pass
@@ -150,16 +196,20 @@ class Game:
     def rows_with_nums(self):
         populated_rows = list()
 
-        for i in range(len(self.board)):
-            if self.board[i] != [0, 0, 0, 0]:
-                populated_rows.append(i)
+        for row in range(len(self.board)):
+            if self.board[row] != [0, 0, 0, 0]:
+                populated_rows.append(row)
 
-        # print(populated_rows)
         return populated_rows
 
     def cols_with_nums(self):
         populated_cols = list()
 
-        for i in range(len(self.board)):
+        for col in range(len(self.board)):
+            if self.board[0][col] == 0:
+                if self.board[1][col] == 0:
+                    if self.board[2][col] == 0:
+                        if self.board[3][col] == 0:
+                            populated_cols.append(col)
 
-
+        return populated_cols
