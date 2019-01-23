@@ -200,6 +200,7 @@ class Game:
             if self.board[row] != [0, 0, 0, 0]:
                 populated_rows.append(row)
 
+        # print(populated_rows)
         return populated_rows
 
     def cols_with_nums(self):
@@ -209,5 +210,5 @@ class Game:
             if not (self.board[0][col] == 0 and self.board[1][col] == 0 and self.board[2][col] == 0 and self.board[3][col] == 0):
                 populated_cols.append(col)
 
-        print(populated_cols)
+        # print(populated_cols)
         return populated_cols
