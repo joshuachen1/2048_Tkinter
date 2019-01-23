@@ -2,37 +2,18 @@ from tkinter import Tk, Label, messagebox, Canvas, StringVar, SUNKEN, BOTTOM, X
 import random
 import copy
 
+
 class Game:
 
-    def __init__(self, master):
-        self.root = master
-        self.root.title("2048")
-
-        # ***** Status Bar *****
-        self.status_msg = StringVar()
-        self.status_msg.set("")
-        self.status_bar = Label(self.root, textvariable=self.status_msg, bd=1, relief=SUNKEN)
-        self.status_bar.pack(side=BOTTOM, padx=2, fill=X)
-
-        # ***** Bind Controls *****
-        visual_board = Canvas(self.root, width=500, height=500)
-        self.root.bind('<Key>', self.shift)
-        visual_board.pack()
-
+    def __init__(self):
         # ***** Initialize Board State *****
         BOARD_SIZE = 4
         self.board = self.new_board(BOARD_SIZE)
         self.spawn_num()
         self.spawn_num()
-        self.display_board()
 
     def new_board(self, size):
         return [[(0) for i in range(size)] for i in range(size)]
-
-    def display_board(self):
-        for i in range(len(self.board)):
-            print("|", self.board[i][0], self.board[i][1], self.board[i][2], self.board[i][3],"|")
-        print()
 
     def is_board_full(self):
         board_full = True
@@ -62,40 +43,6 @@ class Game:
                         self.board[rand_r][rand_c] = 4
                         
                     spawning_num = False
-
-        if self.is_board_full():
-            messagebox.showinfo("Game Over", "Game Over")
-
-    def shift(self, event):
-
-        board_updated = False
-
-        # ***** Determine Arrow Key Pressed *****
-        if event.keycode == 8124162:
-            key = "left"
-            board_updated = self.shift_board_left()
-        elif event.keycode == 8189699:
-            key = "right"
-            board_updated = self.shift_board_right()
-        elif event.keycode == 8320768:
-            key = "up"
-            self.shift_board_up()
-        elif event.keycode == 8255233:
-            key = "down"
-            self.shift_board_down()
-        else:
-            pass
-
-        print(key + " key pressed.")
-
-        if not board_updated:
-            print("no shift occurred")
-
-        self.display_board()
-
-        if board_updated:
-            self.spawn_num()
-            self.display_board()
 
     def shift_board_left(self):
         rows_list = self.rows_with_nums()
@@ -210,9 +157,3 @@ class Game:
 
         # print(populated_rows)
         return populated_rows
-
-
-if __name__ == '__main__':
-    root = Tk()
-    Game(root)
-    root.mainloop()
