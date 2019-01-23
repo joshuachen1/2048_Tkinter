@@ -73,24 +73,24 @@ class Game:
 
         # ***** Determine Arrow Key Pressed *****
         if event.keycode == 8124162:
-            shift = "left"
+            key = "left"
             board_updated = self.shift_board_left()
         elif event.keycode == 8189699:
-            shift = "right"
+            key = "right"
             board_updated = self.shift_board_right()
         elif event.keycode == 8320768:
-            shift = "up"
+            key = "up"
             self.shift_board_up()
         elif event.keycode == 8255233:
-            shift = "down"
+            key = "down"
             self.shift_board_down()
         else:
             pass
 
-        print (shift + " key pressed.")
+        print(key + " key pressed.")
 
         if not board_updated:
-            print("no shift occured")
+            print("no shift occurred")
 
         self.display_board()
 
