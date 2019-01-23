@@ -3,7 +3,7 @@
 
 """
 
-from tkinter import Tk, Label, Canvas, StringVar, SUNKEN, BOTTOM, X, LEFT
+from tkinter import Tk, Label, StringVar, SUNKEN
 import Game_Mechanics
 
 __author__ = "Joshua Chen, Allyson Yamasaki"
