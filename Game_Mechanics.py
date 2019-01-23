@@ -191,7 +191,55 @@ class Game:
         return cols_shifted or cells_merged
 
     def shift_board_down(self):
-        pass
+        cols_list = self.cols_with_nums()
+        cols_shifted = False
+
+        transitioning = True
+        while transitioning:
+            temp = copy.deepcopy(self.board)
+
+            for j in range(len(cols_list)):
+                col = cols_list[j]
+
+                for j in reversed(range(1, 4)):  # looking at everything starting from right side
+                    if self.board[j][col] == 0:
+                        if self.board[j-1][col] != 0:
+                            self.board[j][col] = self.board[j - 1][col]
+                            self.board[j - 1][col] = 0
+                            cols_shifted = True
+
+            if temp == self.board:
+                transitioning = False
+
+        return self.merge_cells_right(cols_list, cols_shifted)
+
+    def merge_cells_down(self, cols_list: list(), cols_shifted: bool):
+        cells_merged = False
+
+        for i in range(len(cols_list)):
+            col = cols_list[i]
+
+            if self.board[3][col] != 0 and self.board[3][col] == self.board[2][col]:
+                self.board[3][col] += self.board[2][col]
+                self.board[2][col] = self.board[1][col]
+                self.board[1][col] = self.board[0][col]
+                self.board[0][col] = 0
+                cells_merged = True
+
+            if self.board[2][col] != 0 and self.board[2][col] == self.board[1][col]:
+                self.board[2][col] += self.board[1][col]
+                self.board[1][col] = self.board[0][col]
+                self.board[0][col] = 0
+                cells_merged = True
+
+            if self.board[1][col] != 0 and self.board[1][col] == self.board[0][col]:
+                self.board[1][col] += self.board[0][col]
+                self.board[0][col] = 0
+                cells_merged = True
+
+        return cols_shifted or cells_merged
+        
+
 
     def rows_with_nums(self):
         populated_rows = list()
