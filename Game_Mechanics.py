@@ -1,4 +1,3 @@
-from tkinter import Tk, Label, messagebox, Canvas, StringVar, SUNKEN, BOTTOM, X
 import random
 import copy
 
@@ -55,7 +54,7 @@ class Game:
             for j in range(len(rows_list)):
                 row = rows_list[j]
 
-                for j in range(0, 3):  # looking at everything starting from right side
+                for j in range(0, 3):  # looking at everything starting from left side
                     if self.board[row][j] == 0:
                         if self.board[row][j + 1] != 0:
                             self.board[row][j] = self.board[row][j + 1]
@@ -157,3 +156,10 @@ class Game:
 
         # print(populated_rows)
         return populated_rows
+
+    def cols_with_nums(self):
+        populated_cols = list()
+
+        for i in range(len(self.board)):
+
+

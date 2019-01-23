@@ -1,4 +1,4 @@
-from tkinter import Tk, Label, messagebox, Canvas, StringVar, SUNKEN, BOTTOM, X
+from tkinter import Tk, Label, Canvas, StringVar, SUNKEN, BOTTOM, X
 import Game_Mechanics
 
 
@@ -53,7 +53,7 @@ class GameWindow:
         print()
 
 
-
-root = Tk()
-g = GameWindow(root)
-root.mainloop()
+if __name__ == '__main__':
+    root = Tk()
+    g = GameWindow(root)
+    root.mainloop()
