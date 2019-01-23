@@ -1,6 +1,13 @@
+#!/usr/bin/env python
+"""Provides Game class for the mechanics of the game.
+
+"""
+
 import random
 import copy
 
+__author__ = "Joshua Chen, Allyson Yamasaki"
+__credits__ = ["Joshua Chen", "Allyson Yamasaki"]
 
 class Game:
 

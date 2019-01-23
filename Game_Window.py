@@ -1,5 +1,13 @@
+#!/usr/bin/env python
+"""Provides GameWindow class for the user to interact with.
+
+"""
+
 from tkinter import Tk, Label, Canvas, StringVar, SUNKEN, BOTTOM, X, LEFT
 import Game_Mechanics
+
+__author__ = "Joshua Chen, Allyson Yamasaki"
+__credits__ = ["Joshua Chen", "Allyson Yamasaki"]
 
 #  ___   ___  _  _   ___
 # |__ \ / _ \| || | / _ \
@@ -160,6 +168,7 @@ class GameWindow:
         for i in range(len(self.game.board)):
             print("|", self.game.board[i][0], self.game.board[i][1], self.game.board[i][2], self.game.board[i][3], "|")
         print()
+
 
 if __name__ == '__main__':
     root = Tk()
