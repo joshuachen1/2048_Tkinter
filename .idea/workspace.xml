@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="428549c9-2a49-4192-b324-535e115624b2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Game_Mechanics.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game_Mechanics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game_Window.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game_Window.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,7 +12,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/2048_Tkinter$Game_Mechanics.coverage" NAME="Game_Mechanics Coverage Results" MODIFIED="1548215198826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/2048_Tkinter$Game.coverage" NAME="Game Coverage Results" MODIFIED="1548313642583" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/2048_Tkinter$Game.coverage" NAME="Game Coverage Results" MODIFIED="1548314707586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -40,11 +39,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game_Window.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="228" column="22" selection-start-line="228" selection-start-column="22" selection-end-line="228" selection-end-column="22" />
+            <state relative-caret-position="228">
+              <caret line="62" column="39" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
               <folding>
                 <element signature="e#88#155#0" expanded="true" />
-                <element signature="e#2218#6560#0" />
+                <element signature="e#1405#2180#0" />
+                <element signature="e#8172#8455#0" />
+                <element signature="e#8855#9151#0" />
               </folding>
             </state>
           </provider>
@@ -69,6 +70,7 @@
       <find>&quot;#%02x%02x%02x&quot; % self.shading</find>
       <find>&quot;#%02x%02x%02x&quot; % self.shading(</find>
       <find>tile3</find>
+      <find>.set(&quot;&quot;)</find>
     </findStrings>
     <replaceStrings>
       <replace>(len(self.board))</replace>
@@ -79,6 +81,7 @@
       <replace>&quot;#%02x%02x%02x&quot; % self.shading(0, 0)</replace>
       <replace>&quot;#%02x%02x%02x&quot; % self.cv</replace>
       <replace>self.tile3</replace>
+      <replace>.set(&quot;{}&quot;.format(self.game.board[0][0]))</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -188,12 +191,12 @@
       <updated>1548192084624</updated>
       <workItem from="1548192087804" duration="13465000" />
       <workItem from="1548216812714" duration="10741000" />
-      <workItem from="1548237181858" duration="8659000" />
+      <workItem from="1548237181858" duration="9733000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32865000" />
+    <option name="totallyTimeSpent" value="33939000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="655" y="23" width="809" height="783" extended-state="0" />
@@ -255,11 +258,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Game_Window.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="228" column="22" selection-start-line="228" selection-start-column="22" selection-end-line="228" selection-end-column="22" />
+        <state relative-caret-position="228">
+          <caret line="62" column="39" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
           <folding>
             <element signature="e#88#155#0" expanded="true" />
-            <element signature="e#2218#6560#0" />
+            <element signature="e#1405#2180#0" />
+            <element signature="e#8172#8455#0" />
+            <element signature="e#8855#9151#0" />
           </folding>
         </state>
       </provider>

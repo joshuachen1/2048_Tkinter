@@ -26,6 +26,10 @@ class GameWindow:
         self.root = master
         self.root.title("2048")
 
+        # ***** Tiles Canvas *****
+        self.RGB = (194, 194, 214)
+        self.create_tiles()
+
         # ***** Menu *****
         main_menu = Menu(master)
         master.config(menu=main_menu)
@@ -35,6 +39,15 @@ class GameWindow:
         game_menu.add_command(label="New Game", command=self.new_game)
         game_menu.add_separator()
         game_menu.add_command(label="Exit", command=self.quit)
+
+        display_menu = Menu(main_menu)
+        main_menu.add_cascade(label="Display", menu=display_menu)
+        color_menu = Menu(display_menu)
+        display_menu.add_cascade(label="Colors", menu=color_menu)
+        color_menu.add_command(label="Default", command=self.set_RGB_gray)
+        color_menu.add_command(label="Pink", command=self.set_RGB_pink)
+        color_menu.add_command(label="Blue", command=self.set_RGB_blue)
+
 
         # ***** Scoreboard *****
         self.score = self.game.score
@@ -47,20 +60,16 @@ class GameWindow:
         self.high_score = StringVar()
         self.high_score.set("Hi-Score\n--------\n{}".format(self.hi_score))
         hs_counter = Label(self.root, textvariable=self.high_score, bd=1, relief=SUNKEN, fg="white", bg="brown")
-        hs_counter.grid(row=0, column=8)
+        hs_counter.grid(row=0, column=6)
 
         # ***** Bind Controls *****
         self.root.bind('<Key>', self.determine_move)
 
-        # ***** Tiles Canvas *****
-        self.RGB = (255, 153, 102)  #ff9966
-        self.create_tiles()
-
         # ***** Status Bar *****
         status_canvas = Canvas(self.root)
-        status_canvas.grid(row=6, columnspan=10)
+        status_canvas.grid(row=6, columnspan=8)
         self.status = StringVar()
-        self.status.set("\tGAME START\t")
+        self.status.set("GAME START")
         self.status_bar = Label(status_canvas, textvariable=self.status, bd=1, relief=SUNKEN, )
         self.status_bar.pack(side=BOTTOM, padx=2, fill=X)
 
@@ -231,6 +240,24 @@ class GameWindow:
         self.display_board()
         self.points.set("Points\n--------\n{}".format(self.game.score))
         self.status.set("New Game Initiated")
+
+    def set_RGB_gray(self):
+        self.RGB = (194, 194, 214)  # c2c2d6
+        self.create_tiles()
+        self.display_board()
+        self.status.set("Board Set: Default")
+
+    def set_RGB_pink(self):
+        self.RGB = (255, 179, 255)  # ffb3ff
+        self.create_tiles()
+        self.display_board()
+        self.status.set("Board Set: Pink")
+
+    def set_RGB_blue(self):
+        self.RGB = (128, 191, 255)  # 80bfff
+        self.create_tiles()
+        self.display_board()
+        self.status.set("Board Set: Blue")
 
     def quit(self):
         self.root.destroy()
