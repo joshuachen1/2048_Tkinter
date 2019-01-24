@@ -43,9 +43,9 @@ class Game:
                 rand_c = random.randint(0, 3)
 
                 if self.board[rand_r][rand_c] == ' ':
-                    probability = random.randint(0, 10)
+                    probability = random.randint(0, 100)
                     
-                    if probability < 8:
+                    if probability < 95:
                         self.board[rand_r][rand_c] = 2
                     else:
                         self.board[rand_r][rand_c] = 4

@@ -3,7 +3,7 @@
 
 """
 
-from tkinter import Tk, Label, StringVar, SUNKEN
+from tkinter import Tk, Label, Canvas, StringVar, SUNKEN
 import Game_Mechanics
 
 __author__ = "Joshua Chen, Allyson Yamasaki"
@@ -41,99 +41,22 @@ class GameWindow:
         self.root.bind('<Key>', self.determine_move)
 
         # ***** Tiles Canvas *****
-        self.value00 = StringVar()
-        self.value00.set("")
-        tile00 = Label(self.root, textvariable=self.value00, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile00.grid(row=2, column=2)
+        self.RGB = (255, 153, 102)  #ff9966
 
-        self.value01 = StringVar()
-        self.value01.set("")
-        tile01 = Label(self.root, textvariable=self.value01, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile01.grid(row=2, column=3)
-
-        self.value02 = StringVar()
-        self.value02.set("")
-        tile02 = Label(self.root, textvariable=self.value02, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile02.grid(row=2, column=4)
-
-        self.value03 = StringVar()
-        self.value03.set("")
-        tile03 = Label(self.root, textvariable=self.value03, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile03.grid(row=2, column=5)
-
-        self.value10 = StringVar()
-        self.value10.set("")
-        tile10 = Label(self.root, textvariable=self.value10, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile10.grid(row=3, column=2)
-
-        self.value11 = StringVar()
-        self.value11.set("")
-        tile11 = Label(self.root, textvariable=self.value11, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile11.grid(row=3, column=3)
-
-        self.value12 = StringVar()
-        self.value12.set("")
-        tile12 = Label(self.root, textvariable=self.value12, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile12.grid(row=3, column=4)
-
-        self.value13 = StringVar()
-        self.value13.set("")
-        tile13 = Label(self.root, textvariable=self.value13, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile13.grid(row=3, column=5)
-
-        self.value20 = StringVar()
-        self.value20.set("")
-        tile20 = Label(self.root, textvariable=self.value20, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile20.grid(row=4, column=2)
-
-        self.value21 = StringVar()
-        self.value21.set("")
-        tile21 = Label(self.root, textvariable=self.value21, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile21.grid(row=4, column=3)
-
-        self.value22 = StringVar()
-        self.value22.set("")
-        tile22 = Label(self.root, textvariable=self.value22, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile22.grid(row=4, column=4)
-
-        self.value23 = StringVar()
-        self.value23.set("")
-        tile23 = Label(self.root, textvariable=self.value23, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile23.grid(row=4, column=5)
-
-        self.value30 = StringVar()
-        self.value30.set("")
-        tile30 = Label(self.root, textvariable=self.value30, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile30.grid(row=5, column=2)
-
-        self.value31 = StringVar()
-        self.value31.set("")
-        tile31 = Label(self.root, textvariable=self.value31, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile31.grid(row=5, column=3)
-
-        self.value32 = StringVar()
-        self.value32.set("")
-        tile32 = Label(self.root, textvariable=self.value32, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile32.grid(row=5, column=4)
-
-        self.value33 = StringVar()
-        self.value33.set("")
-        tile33 = Label(self.root, textvariable=self.value33, bd=1, relief=SUNKEN, bg="gray", height=4, width=6)
-        tile33.grid(row=5, column=5)
-
+        self.create_tiles()
         self.display_board()
 
     def determine_move(self, event):
         board_updated = False
 
         # ***** Determine Arrow Key Pressed *****
-        if event.keycode == 8124162:
+        if event.keycode == 8124162 or event.keycode == 97:
             board_updated = self.game.shift_board_left()
-        elif event.keycode == 8189699:
+        elif event.keycode == 8189699 or event.keycode == 100:
             board_updated = self.game.shift_board_right()
-        elif event.keycode == 8320768:
+        elif event.keycode == 8320768 or event.keycode == 119:
             board_updated = self.game.shift_board_up()
-        elif event.keycode == 8255233:
+        elif event.keycode == 8255233 or event.keycode == 115:
             board_updated = self.game.shift_board_down()
         else:
             pass
@@ -144,6 +67,103 @@ class GameWindow:
         if board_updated:
             self.game.spawn_num()
             self.display_board()
+
+    def create_tiles(self):
+        self.value00 = StringVar()
+        self.value00.set("")
+        self.tile00 = Label(self.root, textvariable=self.value00, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile00.grid(row=2, column=2)
+
+        self.value01 = StringVar()
+        self.value01.set("")
+        self.tile01 = Label(self.root, textvariable=self.value01, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile01.grid(row=2, column=3)
+
+        self.value02 = StringVar()
+        self.value02.set("")
+        self.tile02 = Label(self.root, textvariable=self.value02, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile02.grid(row=2, column=4)
+
+        self.value03 = StringVar()
+        self.value03.set("")
+        self.tile03 = Label(self.root, textvariable=self.value03, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile03.grid(row=2, column=5)
+
+        self.value10 = StringVar()
+        self.value10.set("")
+        self.tile10 = Label(self.root, textvariable=self.value10, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile10.grid(row=3, column=2)
+
+        self.value11 = StringVar()
+        self.value11.set("")
+        self.tile11 = Label(self.root, textvariable=self.value11, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile11.grid(row=3, column=3)
+
+        self.value12 = StringVar()
+        self.value12.set("")
+        self.tile12 = Label(self.root, textvariable=self.value12, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile12.grid(row=3, column=4)
+
+        self.value13 = StringVar()
+        self.value13.set("")
+        self.tile13 = Label(self.root, textvariable=self.value13, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile13.grid(row=3, column=5)
+
+        self.value20 = StringVar()
+        self.value20.set("")
+        self.tile20 = Label(self.root, textvariable=self.value20, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile20.grid(row=4, column=2)
+
+        self.value21 = StringVar()
+        self.value21.set("")
+        self.tile21 = Label(self.root, textvariable=self.value21, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile21.grid(row=4, column=3)
+
+        self.value22 = StringVar()
+        self.value22.set("")
+        self.tile22 = Label(self.root, textvariable=self.value22, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile22.grid(row=4, column=4)
+
+        self.value23 = StringVar()
+        self.value23.set("")
+        self.tile23 = Label(self.root, textvariable=self.value23, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile23.grid(row=4, column=5)
+
+        self.value30 = StringVar()
+        self.value30.set("")
+        self.tile30 = Label(self.root, textvariable=self.value30, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile30.grid(row=5, column=2)
+
+        self.value31 = StringVar()
+        self.value31.set("")
+        self.tile31 = Label(self.root, textvariable=self.value31, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile31.grid(row=5, column=3)
+
+        self.value32 = StringVar()
+        self.value32.set("")
+        self.tile32 = Label(self.root, textvariable=self.value32, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile32.grid(row=5, column=4)
+
+        self.value33 = StringVar()
+        self.value33.set("")
+        self.tile33 = Label(self.root, textvariable=self.value33, bd=1, relief=SUNKEN,
+                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+        self.tile33.grid(row=5, column=5)
 
     def display_board(self):
         # Tkinter Display
