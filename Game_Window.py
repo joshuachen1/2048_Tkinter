@@ -3,7 +3,7 @@
 
 """
 
-from tkinter import Tk, Label, Canvas, StringVar, SUNKEN
+from tkinter import Tk, Label, Canvas, StringVar, SUNKEN, BOTTOM, X
 import Game_Mechanics
 
 __author__ = "Joshua Chen, Allyson Yamasaki"
@@ -42,8 +42,16 @@ class GameWindow:
 
         # ***** Tiles Canvas *****
         self.RGB = (255, 153, 102)  #ff9966
-
         self.create_tiles()
+
+        # ***** Status Bar *****
+        status_canvas = Canvas(self.root)
+        status_canvas.grid(row=6, columnspan=10)
+        self.status = StringVar()
+        self.status.set("\tGAME START\t")
+        self.status_bar = Label(status_canvas, textvariable=self.status, bd=1, relief=SUNKEN, )
+        self.status_bar.pack(side=BOTTOM, padx=2, fill=X)
+
         self.display_board()
 
     def determine_move(self, event):
@@ -62,7 +70,8 @@ class GameWindow:
             pass
 
         self.display_board()
-        self.points.set("Points\n--------\n{}".format(self.game.score))
+
+        self.update_counters()
 
         if board_updated:
             self.game.spawn_num()
@@ -188,6 +197,16 @@ class GameWindow:
         for i in range(len(self.game.board)):
             print("|", self.game.board[i][0], self.game.board[i][1], self.game.board[i][2], self.game.board[i][3], "|")
         print()
+
+    def update_counters(self):
+        if self.game.points_earned > 0:
+            self.status.set("You got {} points!".format(self.game.points_earned))
+        else:
+            self.status.set("-----------------")
+
+        self.game.reset_points()
+
+        self.points.set("Points\n--------\n{}".format(self.game.score))
 
 
 if __name__ == '__main__':
