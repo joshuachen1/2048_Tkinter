@@ -13,8 +13,8 @@ class Game:
 
     def __init__(self):
         # ***** Initialize Board State *****
-        BOARD_SIZE = 4
-        self.board = self.new_board(BOARD_SIZE)
+        self.BOARD_SIZE = 4
+        self.board = self.new_board(self.BOARD_SIZE)
         self.spawn_num()
         self.spawn_num()
 
@@ -295,3 +295,10 @@ class Game:
 
     def reset_points(self):
         self.points_earned = 0
+
+    def soft_reset(self):
+        self.board = self.new_board(self.BOARD_SIZE)
+        self.score = 0
+        self.reset_points()
+        self.spawn_num()
+        self.spawn_num()

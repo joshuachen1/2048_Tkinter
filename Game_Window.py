@@ -3,7 +3,7 @@
 
 """
 
-from tkinter import Tk, Label, Canvas, StringVar, SUNKEN, BOTTOM, X
+from tkinter import Tk, Menu, Label, Canvas, StringVar, SUNKEN, BOTTOM, X
 import Game_Mechanics
 
 __author__ = "Joshua Chen, Allyson Yamasaki"
@@ -26,14 +26,26 @@ class GameWindow:
         self.root = master
         self.root.title("2048")
 
+        # ***** Menu *****
+        main_menu = Menu(master)
+        master.config(menu=main_menu)
+
+        game_menu = Menu(main_menu)
+        main_menu.add_cascade(label="Game", menu=game_menu)
+        game_menu.add_command(label="New Game", command=self.new_game)
+        game_menu.add_separator()
+        game_menu.add_command(label="Exit", command=self.quit)
+
         # ***** Scoreboard *****
+        self.score = self.game.score
         self.points = StringVar()
-        self.points.set("Points\n--------\n{}".format(self.game.score))
+        self.points.set("Points\n--------\n{}".format(self.score))
         point_counter = Label(self.root, textvariable=self.points, bd=1, relief=SUNKEN, fg="white", bg="brown")
         point_counter.grid(row=0, column=0)
 
+        self.hi_score = 0
         self.high_score = StringVar()
-        self.high_score.set("Hi-Score\n--------\n{}".format(0))
+        self.high_score.set("Hi-Score\n--------\n{}".format(self.hi_score))
         hs_counter = Label(self.root, textvariable=self.high_score, bd=1, relief=SUNKEN, fg="white", bg="brown")
         hs_counter.grid(row=0, column=8)
 
@@ -206,7 +218,22 @@ class GameWindow:
 
         self.game.reset_points()
 
+        self.score = self.game.score
+        self.points.set("Points\n--------\n{}".format(self.score))
+
+    def new_game(self):
+        if self.hi_score < self.score:
+            self.hi_score = self.score
+            self.high_score.set("Hi-Score\n--------\n{}".format(self.hi_score))
+
+        self.score = 0
+        self.game.soft_reset()
+        self.display_board()
         self.points.set("Points\n--------\n{}".format(self.game.score))
+        self.status.set("New Game Initiated")
+
+    def quit(self):
+        self.root.destroy()
 
 
 if __name__ == '__main__':
