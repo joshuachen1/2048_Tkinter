@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="428549c9-2a49-4192-b324-535e115624b2" name="Default Changelist" comment="" />
+    <list default="true" id="428549c9-2a49-4192-b324-535e115624b2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Game_Mechanics.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game_Mechanics.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -10,24 +13,24 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/2048_Tkinter$Game_Mechanics.coverage" NAME="Game_Mechanics Coverage Results" MODIFIED="1548215198826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/2048_Tkinter$Game.coverage" NAME="Game Coverage Results" MODIFIED="1548563511774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/2048_Tkinter$Game.coverage" NAME="Game Coverage Results" MODIFIED="1548564172662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game_Mechanics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="370" column="24" selection-start-line="370" selection-start-column="24" selection-end-line="370" selection-end-column="24" />
+            <state relative-caret-position="276">
+              <caret line="58" column="40" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
               <folding>
                 <element signature="e#89#102#0" expanded="true" />
-                <element signature="e#1268#2024#0" />
+                <element signature="e#1782#2653#0" />
                 <element signature="e#2105#3223#0" />
-                <element signature="e#3266#4034#0" />
+                <element signature="e#4066#4949#0" />
                 <element signature="e#4116#5234#0" />
-                <element signature="e#5274#5991#0" />
+                <element signature="e#6360#7192#0" />
                 <element signature="e#6070#7188#0" />
-                <element signature="e#7230#7995#0" />
+                <element signature="e#8602#9482#0" />
                 <element signature="e#8076#9194#0" />
               </folding>
             </state>
@@ -89,8 +92,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Game.py" />
-        <option value="$PROJECT_DIR$/Game_Mechanics.py" />
         <option value="$PROJECT_DIR$/Game_Window.py" />
+        <option value="$PROJECT_DIR$/Game_Mechanics.py" />
       </list>
     </option>
   </component>
@@ -189,12 +192,12 @@
       <updated>1548192084624</updated>
       <workItem from="1548192087804" duration="13465000" />
       <workItem from="1548216812714" duration="10741000" />
-      <workItem from="1548237181858" duration="18800000" />
+      <workItem from="1548237181858" duration="19658000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43006000" />
+    <option name="totallyTimeSpent" value="43864000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="631" y="23" width="809" height="783" extended-state="0" />
@@ -249,17 +252,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Game_Mechanics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="370" column="24" selection-start-line="370" selection-start-column="24" selection-end-line="370" selection-end-column="24" />
+        <state relative-caret-position="276">
+          <caret line="58" column="40" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
           <folding>
             <element signature="e#89#102#0" expanded="true" />
-            <element signature="e#1268#2024#0" />
+            <element signature="e#1782#2653#0" />
             <element signature="e#2105#3223#0" />
-            <element signature="e#3266#4034#0" />
+            <element signature="e#4066#4949#0" />
             <element signature="e#4116#5234#0" />
-            <element signature="e#5274#5991#0" />
+            <element signature="e#6360#7192#0" />
             <element signature="e#6070#7188#0" />
-            <element signature="e#7230#7995#0" />
+            <element signature="e#8602#9482#0" />
             <element signature="e#8076#9194#0" />
           </folding>
         </state>

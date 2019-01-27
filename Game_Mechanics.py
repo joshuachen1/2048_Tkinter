@@ -56,32 +56,37 @@ class Game:
                         
                     spawning_num = False
 
-        if self.is_game_over():
-            self.game_over = True
-            print("Game Over")
+            if self.is_board_full() and self.is_game_over():
+                self.game_over = True
+                print("Game Over")
+        else:
+            if self.is_game_over():
+                self.game_over = True
+                print("Game Over")
 
     def shift_board_left(self):
-        rows_list = self.rows_with_nums()
-        rows_shifted = False
+        if not self.game_over:
+            rows_list = self.rows_with_nums()
+            rows_shifted = False
 
-        transitioning = True
-        while transitioning:
-            temp = copy.deepcopy(self.board)
+            transitioning = True
+            while transitioning:
+                temp = copy.deepcopy(self.board)
 
-            for j in range(len(rows_list)):
-                row = rows_list[j]
+                for j in range(len(rows_list)):
+                    row = rows_list[j]
 
-                for k in range(0, 3):  # looking at everything starting from left side
-                    if self.board[row][k] == ' ':
-                        if self.board[row][k + 1] != ' ':
-                            self.board[row][k] = self.board[row][k + 1]
-                            self.board[row][k + 1] = ' '
-                            rows_shifted = True
+                    for k in range(0, 3):  # looking at everything starting from left side
+                        if self.board[row][k] == ' ':
+                            if self.board[row][k + 1] != ' ':
+                                self.board[row][k] = self.board[row][k + 1]
+                                self.board[row][k + 1] = ' '
+                                rows_shifted = True
 
-            if temp == self.board:
-                transitioning = False
+                if temp == self.board:
+                    transitioning = False
 
-        return self.merge_cells_left(rows_list, rows_shifted)
+            return self.merge_cells_left(rows_list, rows_shifted)
 
     def merge_cells_left(self, rows_list: list(), rows_shifted: bool):
         cells_merged = False
@@ -116,27 +121,28 @@ class Game:
         return rows_shifted or cells_merged
 
     def shift_board_right(self):
-        rows_list = self.rows_with_nums()
-        rows_shifted = False
+        if not self.game_over:
+            rows_list = self.rows_with_nums()
+            rows_shifted = False
 
-        transitioning = True
-        while transitioning:
-            temp = copy.deepcopy(self.board)
+            transitioning = True
+            while transitioning:
+                temp = copy.deepcopy(self.board)
 
-            for j in range(len(rows_list)):
-                row = rows_list[j]
+                for j in range(len(rows_list)):
+                    row = rows_list[j]
 
-                for k in reversed(range(1, 4)):  # looking at everything starting from right side
-                    if self.board[row][k] == ' ':
-                        if self.board[row][k - 1] != ' ':
-                            self.board[row][k] = self.board[row][k - 1]
-                            self.board[row][k - 1] = ' '
-                            rows_shifted = True
+                    for k in reversed(range(1, 4)):  # looking at everything starting from right side
+                        if self.board[row][k] == ' ':
+                            if self.board[row][k - 1] != ' ':
+                                self.board[row][k] = self.board[row][k - 1]
+                                self.board[row][k - 1] = ' '
+                                rows_shifted = True
 
-            if temp == self.board:
-                transitioning = False
+                if temp == self.board:
+                    transitioning = False
 
-        return self.merge_cells_right(rows_list, rows_shifted)
+            return self.merge_cells_right(rows_list, rows_shifted)
 
     def merge_cells_right(self, rows_list: list(), rows_shifted: bool):
         cells_merged = False
@@ -171,27 +177,28 @@ class Game:
         return rows_shifted or cells_merged
 
     def shift_board_up(self):
-        cols_list = self.cols_with_nums()
-        cols_shifted = False
+        if not self.game_over:
+            cols_list = self.cols_with_nums()
+            cols_shifted = False
 
-        transitioning = True
-        while transitioning:
-            temp = copy.deepcopy(self.board)
+            transitioning = True
+            while transitioning:
+                temp = copy.deepcopy(self.board)
 
-            for j in range(len(cols_list)):
-                col = cols_list[j]
+                for j in range(len(cols_list)):
+                    col = cols_list[j]
 
-                for k in range(0, 3):
-                    if self.board[k][col] == ' ':
-                        if self.board[k + 1][col] != ' ':
-                            self.board[k][col] = self.board[k + 1][col]
-                            self.board[k + 1][col] = ' '
-                            cols_shifted = True
+                    for k in range(0, 3):
+                        if self.board[k][col] == ' ':
+                            if self.board[k + 1][col] != ' ':
+                                self.board[k][col] = self.board[k + 1][col]
+                                self.board[k + 1][col] = ' '
+                                cols_shifted = True
 
-            if temp == self.board:
-                transitioning = False
+                if temp == self.board:
+                    transitioning = False
 
-        return self.merge_cells_up(self.cols_with_nums(), cols_shifted)
+            return self.merge_cells_up(self.cols_with_nums(), cols_shifted)
 
     def merge_cells_up(self, cols_list: list(), cols_shifted: bool):
         cells_merged = False
@@ -226,27 +233,28 @@ class Game:
         return cols_shifted or cells_merged
 
     def shift_board_down(self):
-        cols_list = self.cols_with_nums()
-        cols_shifted = False
+        if not self.game_over:
+            cols_list = self.cols_with_nums()
+            cols_shifted = False
 
-        transitioning = True
-        while transitioning:
-            temp = copy.deepcopy(self.board)
+            transitioning = True
+            while transitioning:
+                temp = copy.deepcopy(self.board)
 
-            for j in range(len(cols_list)):
-                col = cols_list[j]
+                for j in range(len(cols_list)):
+                    col = cols_list[j]
 
-                for j in reversed(range(1, 4)):  # looking at everything starting from right side
-                    if self.board[j][col] == ' ':
-                        if self.board[j-1][col] != ' ':
-                            self.board[j][col] = self.board[j - 1][col]
-                            self.board[j - 1][col] = ' '
-                            cols_shifted = True
+                    for j in reversed(range(1, 4)):  # looking at everything starting from right side
+                        if self.board[j][col] == ' ':
+                            if self.board[j-1][col] != ' ':
+                                self.board[j][col] = self.board[j - 1][col]
+                                self.board[j - 1][col] = ' '
+                                cols_shifted = True
 
-            if temp == self.board:
-                transitioning = False
+                if temp == self.board:
+                    transitioning = False
 
-        return self.merge_cells_down(cols_list, cols_shifted)
+            return self.merge_cells_down(cols_list, cols_shifted)
 
     def merge_cells_down(self, cols_list: list(), cols_shifted: bool):
         cells_merged = False
@@ -330,7 +338,7 @@ class Game:
 
                 try:
                     # Right
-                    if curr_tile == self.board[row][col - 1]:
+                    if curr_tile == self.board[row][col + 1]:
                         no_possible_moves = False
                 except IndexError:
                     pass
