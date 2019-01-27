@@ -315,22 +315,8 @@ class Game:
                 curr_tile = self.board[row][col]
 
                 try:
-                    # Top Left
-                    if curr_tile == self.board[row - 1][col - 1]:
-                        no_possible_moves = False
-                except IndexError:
-                    pass
-
-                try:
                     # Above
                     if curr_tile == self.board[row - 1][col]:
-                        no_possible_moves = False
-                except IndexError:
-                    pass
-
-                try:
-                    # Top Right
-                    if curr_tile == self.board[row - 1][col + 1]:
                         no_possible_moves = False
                 except IndexError:
                     pass
@@ -350,22 +336,8 @@ class Game:
                     pass
 
                 try:
-                    # Lower Left
-                    if curr_tile == self.board[row + 1][col - 1]:
-                        no_possible_moves = False
-                except IndexError:
-                    pass
-
-                try:
                     # Below
                     if curr_tile == self.board[row + 1][col]:
-                        no_possible_moves = False
-                except IndexError:
-                    pass
-
-                try:
-                    # Lower Right
-                    if curr_tile == self.board[row + 1][col + 1]:
                         no_possible_moves = False
                 except IndexError:
                     pass
