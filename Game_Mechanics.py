@@ -308,7 +308,7 @@ class Game:
 
     def is_game_over(self):
         # Every Tile is Full
-        game_over = True
+        no_possible_moves = True
 
         for row in range(self.BOARD_SIZE):
             for col in range(self.BOARD_SIZE):
@@ -317,63 +317,63 @@ class Game:
                 try:
                     # Top Left
                     if curr_tile == self.board[row - 1][col - 1]:
-                        game_over = False
+                        no_possible_moves = False
                 except IndexError:
                     pass
 
                 try:
                     # Above
                     if curr_tile == self.board[row - 1][col]:
-                        game_over = False
+                        no_possible_moves = False
                 except IndexError:
                     pass
 
                 try:
                     # Top Right
                     if curr_tile == self.board[row - 1][col + 1]:
-                        game_over = False
+                        no_possible_moves = False
                 except IndexError:
                     pass
 
                 try:
                     # Left
                     if curr_tile == self.board[row][col - 1]:
-                        game_over = False
+                        no_possible_moves = False
                 except IndexError:
                     pass
 
                 try:
                     # Right
                     if curr_tile == self.board[row][col - 1]:
-                        game_over = False
+                        no_possible_moves = False
                 except IndexError:
                     pass
 
                 try:
                     # Lower Left
                     if curr_tile == self.board[row + 1][col - 1]:
-                        game_over = False
+                        no_possible_moves = False
                 except IndexError:
                     pass
 
                 try:
                     # Below
                     if curr_tile == self.board[row + 1][col]:
-                        game_over = False
+                        no_possible_moves = False
                 except IndexError:
                     pass
 
                 try:
                     # Lower Right
                     if curr_tile == self.board[row + 1][col + 1]:
-                        game_over = False
+                        no_possible_moves = False
                 except IndexError:
                     pass
 
-                if not game_over:
+                if not no_possible_moves:
                     break
 
-        return game_over
+        return no_possible_moves
 
     def reset_points(self):
         self.points_earned = 0
