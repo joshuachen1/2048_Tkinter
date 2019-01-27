@@ -27,7 +27,7 @@ class GameWindow:
         self.root.title("2048")
 
         # ***** Tiles Canvas *****
-        self.RGB = (194, 194, 214)
+        self.rgb = (194, 194, 214)
         self.create_tiles()
 
         # ***** Menu *****
@@ -44,10 +44,9 @@ class GameWindow:
         main_menu.add_cascade(label="Display", menu=display_menu)
         color_menu = Menu(display_menu)
         display_menu.add_cascade(label="Colors", menu=color_menu)
-        color_menu.add_command(label="Default", command=self.set_RGB_gray)
-        color_menu.add_command(label="Pink", command=self.set_RGB_pink)
-        color_menu.add_command(label="Blue", command=self.set_RGB_blue)
-
+        color_menu.add_command(label="Default", command=self.set_rgb_gray)
+        color_menu.add_command(label="Pink", command=self.set_rgb_pink)
+        color_menu.add_command(label="Blue", command=self.set_rgb_blue)
 
         # ***** Scoreboard *****
         self.score = self.game.score
@@ -78,13 +77,16 @@ class GameWindow:
     def determine_move(self, event):
         board_updated = False
 
-        # ***** Determine Arrow Key Pressed *****
+        # Left Arrow or A
         if event.keycode == 8124162 or event.keycode == 97:
             board_updated = self.game.shift_board_left()
+        # Right Arrow or D
         elif event.keycode == 8189699 or event.keycode == 100:
             board_updated = self.game.shift_board_right()
+        # Up Arrow or W
         elif event.keycode == 8320768 or event.keycode == 119:
             board_updated = self.game.shift_board_up()
+        # Down Arrow or S
         elif event.keycode == 8255233 or event.keycode == 115:
             board_updated = self.game.shift_board_down()
         else:
@@ -94,6 +96,12 @@ class GameWindow:
 
         self.update_counters()
 
+        if self.game.is_game_over():
+            self.game_over()
+
+        if self.game.victory:
+            self.game_win()
+
         if board_updated:
             self.game.spawn_num()
             self.display_board()
@@ -102,97 +110,97 @@ class GameWindow:
         self.value00 = StringVar()
         self.value00.set("")
         self.tile00 = Label(self.root, textvariable=self.value00, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile00.grid(row=2, column=2)
 
         self.value01 = StringVar()
         self.value01.set("")
         self.tile01 = Label(self.root, textvariable=self.value01, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile01.grid(row=2, column=3)
 
         self.value02 = StringVar()
         self.value02.set("")
         self.tile02 = Label(self.root, textvariable=self.value02, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile02.grid(row=2, column=4)
 
         self.value03 = StringVar()
         self.value03.set("")
         self.tile03 = Label(self.root, textvariable=self.value03, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile03.grid(row=2, column=5)
 
         self.value10 = StringVar()
         self.value10.set("")
         self.tile10 = Label(self.root, textvariable=self.value10, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile10.grid(row=3, column=2)
 
         self.value11 = StringVar()
         self.value11.set("")
         self.tile11 = Label(self.root, textvariable=self.value11, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile11.grid(row=3, column=3)
 
         self.value12 = StringVar()
         self.value12.set("")
         self.tile12 = Label(self.root, textvariable=self.value12, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile12.grid(row=3, column=4)
 
         self.value13 = StringVar()
         self.value13.set("")
         self.tile13 = Label(self.root, textvariable=self.value13, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile13.grid(row=3, column=5)
 
         self.value20 = StringVar()
         self.value20.set("")
         self.tile20 = Label(self.root, textvariable=self.value20, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile20.grid(row=4, column=2)
 
         self.value21 = StringVar()
         self.value21.set("")
         self.tile21 = Label(self.root, textvariable=self.value21, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile21.grid(row=4, column=3)
 
         self.value22 = StringVar()
         self.value22.set("")
         self.tile22 = Label(self.root, textvariable=self.value22, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile22.grid(row=4, column=4)
 
         self.value23 = StringVar()
         self.value23.set("")
         self.tile23 = Label(self.root, textvariable=self.value23, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile23.grid(row=4, column=5)
 
         self.value30 = StringVar()
         self.value30.set("")
         self.tile30 = Label(self.root, textvariable=self.value30, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile30.grid(row=5, column=2)
 
         self.value31 = StringVar()
         self.value31.set("")
         self.tile31 = Label(self.root, textvariable=self.value31, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile31.grid(row=5, column=3)
 
         self.value32 = StringVar()
         self.value32.set("")
         self.tile32 = Label(self.root, textvariable=self.value32, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile32.grid(row=5, column=4)
 
         self.value33 = StringVar()
         self.value33.set("")
         self.tile33 = Label(self.root, textvariable=self.value33, bd=1, relief=SUNKEN,
-                            bg="#%02x%02x%02x" % self.RGB, height=4, width=6)
+                            bg="#%02x%02x%02x" % self.rgb, height=4, width=6)
         self.tile33.grid(row=5, column=5)
 
     def display_board(self):
@@ -241,23 +249,29 @@ class GameWindow:
         self.points.set("Points\n--------\n{}".format(self.game.score))
         self.status.set("New Game Initiated")
 
-    def set_RGB_gray(self):
-        self.RGB = (194, 194, 214)  # c2c2d6
+    def set_rgb_gray(self):
+        self.rgb = (194, 194, 214)  # c2c2d6
         self.create_tiles()
         self.display_board()
         self.status.set("Board Set: Default")
 
-    def set_RGB_pink(self):
-        self.RGB = (255, 179, 255)  # ffb3ff
+    def set_rgb_pink(self):
+        self.rgb = (255, 179, 255)  # ffb3ff
         self.create_tiles()
         self.display_board()
         self.status.set("Board Set: Pink")
 
-    def set_RGB_blue(self):
-        self.RGB = (128, 191, 255)  # 80bfff
+    def set_rgb_blue(self):
+        self.rgb = (128, 191, 255)  # 80bfff
         self.create_tiles()
         self.display_board()
         self.status.set("Board Set: Blue")
+
+    def game_win(self):
+        self.status.set("YOU WIN!")
+
+    def game_over(self):
+        self.status.set("GAME OVER")
 
     def quit(self):
         self.root.destroy()
@@ -267,3 +281,4 @@ if __name__ == '__main__':
     root = Tk()
     g = GameWindow(root)
     root.mainloop()
+

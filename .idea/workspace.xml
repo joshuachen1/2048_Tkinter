@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="428549c9-2a49-4192-b324-535e115624b2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Game_Mechanics.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game_Mechanics.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Game_Window.py" beforeDir="false" afterPath="$PROJECT_DIR$/Game_Window.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -12,15 +13,15 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/2048_Tkinter$Game_Mechanics.coverage" NAME="Game_Mechanics Coverage Results" MODIFIED="1548215198826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/2048_Tkinter$Game.coverage" NAME="Game Coverage Results" MODIFIED="1548314707586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/2048_Tkinter$Game.coverage" NAME="Game Coverage Results" MODIFIED="1548563200409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Game_Mechanics.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1485">
-              <caret line="303" column="24" selection-start-line="303" selection-start-column="24" selection-end-line="303" selection-end-column="24" />
+            <state relative-caret-position="316">
+              <caret line="370" column="20" selection-start-line="370" selection-start-column="20" selection-end-line="370" selection-end-column="20" />
               <folding>
                 <element signature="e#89#102#0" expanded="true" />
                 <element signature="e#1268#2024#0" />
@@ -36,16 +37,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Game_Window.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="62" column="39" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
+            <state relative-caret-position="198">
+              <caret line="223" lean-forward="true" selection-start-line="223" selection-end-line="227" selection-end-column="15" />
               <folding>
                 <element signature="e#88#155#0" expanded="true" />
-                <element signature="e#1405#2180#0" />
-                <element signature="e#8172#8455#0" />
-                <element signature="e#8855#9151#0" />
+                <element signature="e#3401#7743#0" />
               </folding>
             </state>
           </provider>
@@ -71,6 +70,7 @@
       <find>&quot;#%02x%02x%02x&quot; % self.shading(</find>
       <find>tile3</find>
       <find>.set(&quot;&quot;)</find>
+      <find>RGB</find>
     </findStrings>
     <replaceStrings>
       <replace>(len(self.board))</replace>
@@ -82,6 +82,7 @@
       <replace>&quot;#%02x%02x%02x&quot; % self.cv</replace>
       <replace>self.tile3</replace>
       <replace>.set(&quot;{}&quot;.format(self.game.board[0][0]))</replace>
+      <replace>rgb</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -91,13 +92,13 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Game.py" />
-        <option value="$PROJECT_DIR$/Game_Mechanics.py" />
         <option value="$PROJECT_DIR$/Game_Window.py" />
+        <option value="$PROJECT_DIR$/Game_Mechanics.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="655" />
+    <option name="x" value="631" />
     <option name="y" value="23" />
     <option name="width" value="809" />
     <option name="height" value="783" />
@@ -191,15 +192,15 @@
       <updated>1548192084624</updated>
       <workItem from="1548192087804" duration="13465000" />
       <workItem from="1548216812714" duration="10741000" />
-      <workItem from="1548237181858" duration="9733000" />
+      <workItem from="1548237181858" duration="18536000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33939000" />
+    <option name="totallyTimeSpent" value="42742000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="655" y="23" width="809" height="783" extended-state="0" />
+    <frame x="631" y="23" width="809" height="783" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.17287785" />
@@ -238,10 +239,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Game_Window.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="223" lean-forward="true" selection-start-line="223" selection-end-line="227" selection-end-column="15" />
+          <folding>
+            <element signature="e#88#155#0" expanded="true" />
+            <element signature="e#3401#7743#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Game_Mechanics.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1485">
-          <caret line="303" column="24" selection-start-line="303" selection-start-column="24" selection-end-line="303" selection-end-column="24" />
+        <state relative-caret-position="316">
+          <caret line="370" column="20" selection-start-line="370" selection-start-column="20" selection-end-line="370" selection-end-column="20" />
           <folding>
             <element signature="e#89#102#0" expanded="true" />
             <element signature="e#1268#2024#0" />
@@ -252,19 +264,6 @@
             <element signature="e#6070#7188#0" />
             <element signature="e#7230#7995#0" />
             <element signature="e#8076#9194#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Game_Window.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="62" column="39" selection-start-line="62" selection-start-column="39" selection-end-line="62" selection-end-column="39" />
-          <folding>
-            <element signature="e#88#155#0" expanded="true" />
-            <element signature="e#1405#2180#0" />
-            <element signature="e#8172#8455#0" />
-            <element signature="e#8855#9151#0" />
           </folding>
         </state>
       </provider>

@@ -9,6 +9,7 @@ import copy
 __author__ = "Joshua Chen, Allyson Yamasaki"
 __credits__ = ["Joshua Chen", "Allyson Yamasaki"]
 
+
 class Game:
 
     def __init__(self):
@@ -20,6 +21,8 @@ class Game:
 
         self.score = 0
         self.points_earned = 0
+        self.game_over = False
+        self.victory = False
 
     def new_board(self, size):
         return [[(' ') for i in range(size)] for i in range(size)]
@@ -52,6 +55,10 @@ class Game:
                         self.board[rand_r][rand_c] = 4
                         
                     spawning_num = False
+
+        if self.is_game_over():
+            self.game_over = True
+            print("Game Over")
 
     def shift_board_left(self):
         rows_list = self.rows_with_nums()
@@ -292,6 +299,81 @@ class Game:
 
         # print(populated_cols)
         return populated_cols
+
+    def did_player_win(self):
+        for i in range(self.BOARD_SIZE):
+            for j in range(self.BOARD_SIZE):
+                if self.board[i][j] == 2048:
+                    self.victory = True
+
+    def is_game_over(self):
+        # Every Tile is Full
+        game_over = True
+
+        for row in range(self.BOARD_SIZE):
+            for col in range(self.BOARD_SIZE):
+                curr_tile = self.board[row][col]
+
+                try:
+                    # Top Left
+                    if curr_tile == self.board[row - 1][col - 1]:
+                        game_over = False
+                except IndexError:
+                    pass
+
+                try:
+                    # Above
+                    if curr_tile == self.board[row - 1][col]:
+                        game_over = False
+                except IndexError:
+                    pass
+
+                try:
+                    # Top Right
+                    if curr_tile == self.board[row - 1][col + 1]:
+                        game_over = False
+                except IndexError:
+                    pass
+
+                try:
+                    # Left
+                    if curr_tile == self.board[row][col - 1]:
+                        game_over = False
+                except IndexError:
+                    pass
+
+                try:
+                    # Right
+                    if curr_tile == self.board[row][col - 1]:
+                        game_over = False
+                except IndexError:
+                    pass
+
+                try:
+                    # Lower Left
+                    if curr_tile == self.board[row + 1][col - 1]:
+                        game_over = False
+                except IndexError:
+                    pass
+
+                try:
+                    # Below
+                    if curr_tile == self.board[row + 1][col]:
+                        game_over = False
+                except IndexError:
+                    pass
+
+                try:
+                    # Lower Right
+                    if curr_tile == self.board[row + 1][col + 1]:
+                        game_over = False
+                except IndexError:
+                    pass
+
+                if not game_over:
+                    break
+
+        return game_over
 
     def reset_points(self):
         self.points_earned = 0
